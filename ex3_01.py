@@ -26,8 +26,7 @@ def create_adjacency_list(file):
             line = line.rstrip('\n')
             tweet = line.split("\t")
 
-            timestamp = int(datetime.strptime(
-                tweet[0], "%Y-%m-%d %H:%M:%S").strftime("%s"))
+            timestamp = int(datetime.strptime(tweet[0], "%Y-%m-%d %H:%M:%S").strftime("%s"))
             username = tweet[1]
             usrs = p.parse(tweet[2], html=False).users
 
@@ -111,5 +110,6 @@ def create_graph_edge_list(adjust_list, filename):
 
 
 if __name__ == '__main__':
-    lst = create_adjacency_list(data)
+    # lst = create_adjacency_list(data)
+    small = create_adjacency_list(saver)
     create_graph_edge_list(lst, csv_graph_tool)

@@ -1,10 +1,10 @@
 import sys
 import networkx as nx
-import _pickle as pickle
+# import _pickle as pickle
 import csv
 import numpy as np
 from graph_tool.all import *
-# import cPickle as pickle
+import cPickle as pickle
 
 
 raw_twitter_small_dataset = 'data/twitter-small.in'
@@ -35,8 +35,8 @@ def in_degree_distribution(DiGraph, title, filename):
     bin_count = np.bincount(np.array(in_degrees))
     dump(bin_count, filename)
     print("In Degree Distribution " + title + " \n")
-    print(bin_count)
-    print("\n")
+    # print(bin_count)
+    # print("\n")
 
 
 def out_degree_distribution(DiGraph, title, filename):
@@ -122,15 +122,14 @@ def dump(picle, filename):
 
 
 def main():
-    small = parse_file_to_graph_tool_digraph(
-        csv_graph_tool_twitter_small_dataset)
-    aprox_distance_distribution(
-        small, 'pickles/Small_Distance_Histogram.pickle')
+    # small = parse_file_to_graph_tool_digraph(csv_graph_tool_twitter_small_dataset)
+    # aprox_distance_distribution(small, 'pickles/Small_Distance_Histogram.pickle')
 
     # number_of_edges(small, 'Small Network')
     # number_of_edges(small, "Small network")
     # network_density(small, "network Density")
-    # in_degree_distribution(small, "Small network", "pickles/Small_In_Degree_Distribution.pickle")
+    small = parse_file_to_digraph(csv_twitter_small_dataset)
+    in_degree_distribution(small, "Small network", "pickles/Small_In_Degree_Distribution.pickle")
     # out_degree_distribution(small, "Small network", "pickles/Small_Out_Degree_Distribution.pickle")
 
 
