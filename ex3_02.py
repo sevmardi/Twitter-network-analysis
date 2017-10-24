@@ -1,15 +1,15 @@
 import sys
 import networkx as nx
-# import _pickle as pic
+import _pickle as pickle
 import csv
 import numpy as np
-# from graph_tool.all import *
-import cPickle as pickle
+from graph_tool.all import *
+# import cPickle as pickle
 
-# sys.setdefaultencoding("UTF-8")
 
-data = 'data/twitter-small.in'
-csv_file = "csv/twitter-small.csv"
+raw_twitter_small_dataset = 'data/twitter-small.in'
+csv_twitter_small_dataset = "csv/twitter-small.csv"
+csv_graph_tool_twitter_small_dataset = 'csv/csv_graph_tool_twitter-small.csv'
 
 
 def number_of_edges(graph, title):
@@ -66,28 +66,55 @@ def get_largest_component(graph, titel, filename):
     in_degree_distribution(graph, title, filename)
     out_degree_distribution(graph, titel, filename)
 
-    # Save the largest file
+
+def save_large_comp(graph, filename):
+    """
+    Save the largest file
+    """
     nx.write_weighted_edgelist(graph, filename, delimiter=",")
 
-#TODO
-def aprox_distance_distribution(filename):
-    pass
+
+def aprox_distance_distribution(graph, filename):
+    l = graph_tool.topology.label_largest_component(graph)
+    u = graph_tool.topology.GraphView(graph, vfilt=l)
+
+    dist = graph_tool.stats.distance_histogram(u)
+
+    dump(dist[0], filename)
+    print("Distance Distribution:")
+    print(dist[0])
+    print("\n")
+
 
 def parse_file_to_digraph(filename):
+    """
+    Create a Di graph. 
+    """
     dg = nx.DiGraph()
     with open(filename, 'r') as files:
         for line in files:
             line = line.rstrip('\n')
             v = line.split(",")
 
-            dg.add_edge(v[0],v[1],{'weight':v[2],'timestamp':v[3]})
+            dg.add_edge(v[0], v[1], {'weight': v[2], 'timestamp': v[3]})
 
     return dg
 
-# TODO
-def parse_file_to_gtdigraph(filename):
+
+def parse_file_to_graph_tool_digraph(filename):
     """
     """
+    g = Graph()
+
+    with open(filename, 'r') as file:
+        file_reader = csv.reader(file, delimiter=',', quotechar='|')
+
+        next(file_reader)
+
+        for i in file_reader:
+            g.add_edge(i[0], i[1])
+
+    return g
 
 
 def dump(picle, filename):
@@ -95,13 +122,17 @@ def dump(picle, filename):
 
 
 def main():
-    small = parse_file_to_digraph(csv_file)
+    small = parse_file_to_graph_tool_digraph(
+        csv_graph_tool_twitter_small_dataset)
+    aprox_distance_distribution(
+        small, 'pickles/Small_Distance_Histogram.pickle')
+
     # number_of_edges(small, 'Small Network')
-    # number_of_edges(small, "Small network") 
+    # number_of_edges(small, "Small network")
     # network_density(small, "network Density")
     # in_degree_distribution(small, "Small network", "pickles/Small_In_Degree_Distribution.pickle")
     # out_degree_distribution(small, "Small network", "pickles/Small_Out_Degree_Distribution.pickle")
-    
+
 
 if __name__ == '__main__':
     main()
