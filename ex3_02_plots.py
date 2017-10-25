@@ -36,8 +36,8 @@ def main():
 
 	options['x'] = x
 	options['xlabel'] = 'In degrees'
-	options['ylabel'] = 'F'
-	options['title'] = 'In degree'
+	options['ylabel'] = y;
+	options['title'] = 'frequency'
 	options['filename'] = 'diagrams/Small_Out_Degree_Distribution.png'
 	options['log'] = True
 

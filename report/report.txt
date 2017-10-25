@@ -1,0 +1,122 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%Tables..
+\usepackage[table,xcdraw]{xcolor}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{graphicx}
+
+
+\title{%	
+   \textbf{Social Network Analysis For Computer Scientists} \\
+   \bigskip
+  \large Assignment 2 \\ }
+
+\author{
+  Sevak Mardirosian\\	
+  \texttt{s2077086}\\
+  \texttt{s.mardirosian@umail.leidenuniv.nl}
+}
+
+\usepackage{graphicx}
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+\noindent This paper is relevant to SNACS course at Leiden University and specifically contains the answers for the first assignment.  
+
+\subsection{Organization} 
+ \noindent In section 2 I will try to answer the theoretical questions regarding Graphs. In section 3 I will partially reference the reader to the zip file which contains working scripts. I will, in few words, try to explain the ways I obtained my answers using which tools and techniques.   \\
+
+\subsection{Tools and Techniques}
+For the programing parts I will be using a combination of Python2.7 and Python 3.* scripting language with libraries such as \textbf{networkx}, \textbf{matplotlib}, \textbf{graph tool} and \textbf{pickle} which is already built-in both Python versions.  
+
+\newpage
+\section{Clustering Coefficient}
+\subsection{Question 1 Name a) two types of graphs that have a clustering coefficient
+of 0 by definition and b) a type of graph hat has a clustering coefficient of 1 by definition}
+
+The idea is as following: A tree, by definition, has no loops, and therefore has a clustering coefficient of 0. One other example as such is the bipartite graph. This type, at least of length 4, would only have cycles, simply because its impossible for two edges in the same partition to have a connection. Cycles of length 4 do not contribute to the clustering coefficient, because that only counts the number of triangles, i.e. the number of cycles of length 3.
+
+
+
+\subsection{Question 2 Consider all possible connected undirected graphs with n = 9 nodes and m = 15 edges. Draw such a graph with a minimum average graph clustering coefficient.}
+
+
+
+\subsection{Question 3 Give an algorithm, in words or in pseudo-code, for finding a connected undirected graph with a minimal average graph clustering coefficient for any given m and n. What can you say about the complexity of your algorithm?}
+
+
+
+\newpage
+\section{Exercise 2: Densest Subgraphs}
+\subsection{Using the greedy algorithm by Charicar et al to compute which nodes form the densest subgraph of the graph shown in Figure 1 of Assignment2.pdf. Write down relevant state variables of the algorithm in each iteration as well as
+the different branching steps.}
+
+
+\newpage
+\section{Twitter network analysis}
+\subsection{Question 3.1 Extract the mention graph from the Twitter data. }
+
+\subsection{Question 3.2 Present relevant statistics of your mention graph, includ-
+ing at least the number of nodes, number of edges, density, degree distri-
+bution and (approximated) distance distribution. What can you say about
+the size of the giant component?}
+
+
+\subsection{Question 3.3 Determine the top 20 users based on three different cen-
+trality measures (for example, betweenness centrality, closeness centrality
+and degree centrality). Discuss the results. Can you come up with a way
+to numerically compare the similarity of the rankings?}
+
+
+\subsection{Question 3.4 Apply a community detection algorithm (such as Modu-
+larity in Gephi) to the giant component of your mention graph, and try to
+manually interpret and discuss the results. How did you set the resolution
+parameter?}
+
+\subsection{Visualize the giant component of the network}
+
+
+
+\subsection{Question 3.6 Run your code on the larger dataset given in the file
+twitter-larger.in, and answer Question 3.2 and 3.3.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

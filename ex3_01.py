@@ -7,7 +7,7 @@ import csv
 
 # https://stackoverflow.com/questions/7626643/python-tweet-parsing
 
-data = 'data/twitter-small.in'
+raw_data = 'data/twitter-small.in'
 saver = "csv/twitter-small.csv"
 csv_graph_tool = "csv/csv_graph_tool_twitter-small.csv"
 
@@ -69,8 +69,6 @@ def create_edge_list(adjust_list, filename):
             csv_out.writerow(row)
 
 # TODO Needs refactoring.
-
-
 def create_graph_edge_list(adjust_list, filename):
     """
     A helper function to create edge list for graph-tool
@@ -111,5 +109,7 @@ def create_graph_edge_list(adjust_list, filename):
 
 if __name__ == '__main__':
     # lst = create_adjacency_list(data)
-    small = create_adjacency_list(saver)
-    create_graph_edge_list(lst, csv_graph_tool)
+    # create_graph_edge_list(lst, csv_graph_tool)
+
+    small = create_adjacency_list(raw_data)
+    create_edge = create_edge_list(small, saver)

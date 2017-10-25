@@ -44,7 +44,7 @@ def in_degree_centrality(file):
     print(nx.in_degree_centrality(file))
 
 
-def out_out_degree_centrality(file):
+def out_degree_centrality(file):
     print(nx.out_degree_centrality(file))
 
 
