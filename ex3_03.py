@@ -4,9 +4,13 @@ import numpy as np
 import _pickle as pickle
 
 
-raw_twitter_small_dataset = 'data/twitter-small.in'
+
 csv_twitter_small_dataset = "csv/twitter-small.csv"
 csv_graph_tool_twitter_small_dataset = 'csv/csv_graph_tool_twitter-small.csv'
+
+
+csv_twitter_large_dataset = "csv/twitter-large.csv"
+csv_graph_tool_twitter_small_dataset = 'csv/csv_graph_tool_twitter-large.csv'
 
 
 def parse_file_to_digraph(filename):
@@ -56,8 +60,12 @@ def dump(picle, filename):
     pickle.dump(picle, open(filename, 'wb'))
 
 def main():
-	small = parse_file_to_digraph(csv_twitter_small_dataset)
-	in_degree_centrality(small)
+	# small = parse_file_to_digraph(csv_twitter_small_dataset)
+	# in_degree_centrality(small)
 
+    large = parse_file_to_digraph(csv_twitter_large_dataset)
+    in_degree_centrality(large)
+
+    
 if __name__ == '__main__':
     main()

@@ -6,10 +6,18 @@ import numpy as np
 from graph_tool.all import *
 # import cPickle as pickle
 
+# csv_twitter_small_dataset = "twitter-small.csv"
+
+csv_small_test = "csv/twitter-small-test.csv"
 
 raw_twitter_small_dataset = 'data/twitter-small.in'
 csv_twitter_small_dataset = "csv/twitter-small.csv"
 csv_graph_tool_twitter_small_dataset = 'csv/csv_graph_tool_twitter-small.csv'
+
+
+raw_twitter_large_dataset = 'data/twitter-large.in'
+csv_twitter_large_dataset = "csv/twitter-large.csv"
+csv_graph_tool_twitter_large_dataset = 'csv/csv_graph_tool_twitter-large.csv'
 
 
 def number_of_edges(graph, title):
@@ -19,7 +27,7 @@ def number_of_edges(graph, title):
 
 
 def number_of_nodes(graph, title):
-    print("Number of Nodes in the network")
+    print("Number of Nodes")
     print(title + ": " + str(nx.number_of_nodes(graph)))
     print('\n')
 
@@ -122,23 +130,25 @@ def dump(picle, filename):
 
 
 def main():
-    # small = parse_file_to_graph_tool_digraph(csv_graph_tool_twitter_small_dataset)
-    # aprox_distance_distribution(small, 'pickles/Small_Distance_Histogram.pickle')
-
-    small = parse_file_to_digraph(csv_twitter_small_dataset)
-
-    # number_of_nodes(small, "Small Network")
+    # small_to_graph_tool = parse_file_to_graph_tool_digraph(csv_graph_tool_twitter_small_dataset)
+    small = parse_file_to_digraph(csv_small_test)
+    # aprox_distance_distribution(small_to_graph_tool, 'pickles/Small_Distance_Histogram.pickle')
+    
+    number_of_nodes(small, "Small Network")
     # number_of_edges(small, 'Small Network')
     # network_density(small, "network Density")
     # number_of_weakly_connected_components(small, "Small Network")
-    number_of_strongly_connected_components(small, "Small Network")
+    # number_of_strongly_connected_components(small, "Small Network")
+
     # largestS = max(nx.strongly_connected_component_subgraphs(small), key=len)
     # get_largest_component(largestS, "Largest Component Small Network", 'pickles/Largest_Small_In_Degree_Distribution.pickle')
-
-
     # in_degree_distribution(small, "Small network", "pickles/Small_In_Degree_Distribution.pickle")
     # out_degree_distribution(small, "Small network", "pickles/Small_Out_Degree_Distribution.pickle")
 
+
+    #Large
+    # large = parse_file_to_digraph(csv_twitter_small_dataset)
+    # number_of_nodes(large, "Large Network")
 
 if __name__ == '__main__':
     main()
