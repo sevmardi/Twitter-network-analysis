@@ -17,9 +17,9 @@ adoniramsides
 sjusjun              
 zwiebertjuh          
 paulschwend          
-jaykahn                                                                                                             
-carlosblaze                                                                                                      
-stealthsolidus                                                                                                                                                                                                                                                                                                                                                                                                           
+jaykahn           
+carlosblaze 
+stealthsolidus                                                                                                                                                                                                                                        
 Betweenness    
 ################################################  
 theiphoneblog        
@@ -42,6 +42,7 @@ krystynchong
 mayhemstudios
 talosman
 razorianfly
+
 
 In Degree Centrality
 ################################################
@@ -89,3 +90,18 @@ luv_nokia_n97
 andyoniphone
 trackle
 razorianfly
+
+
+
+weakly_connected_component_subgraphs
+---------------------------------------
+Number of Edges
+Smallest Component - Small Network: 52648
+
+
+Number of Nodes
+Smallest Component - Small Network: 39443
+
+
+Network Density
+Smallest Component - Small Network: 3.3841765318431556e-05

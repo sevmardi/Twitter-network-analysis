@@ -6,9 +6,6 @@ import numpy as np
 from graph_tool.all import *
 # import cPickle as pickle
 
-# csv_twitter_small_dataset = "twitter-small.csv"
-
-csv_small_test = "csv/twitter-small-test.csv"
 
 raw_twitter_small_dataset = 'data/twitter-small.in'
 csv_twitter_small_dataset = "csv/twitter-small.csv"
@@ -71,8 +68,8 @@ def get_largest_component(graph, title, filename):
     number_of_edges(graph, title)
     number_of_nodes(graph, title)
     network_density(graph, title)
-    in_degree_distribution(graph, title, filename)
-    out_degree_distribution(graph, title, filename)
+    # in_degree_distribution(graph, title, filename)
+    # out_degree_distribution(graph, title, filename)
 
 
 def save_large_comp(graph, filename):
@@ -131,24 +128,36 @@ def dump(picle, filename):
 
 def main():
     # small_to_graph_tool = parse_file_to_graph_tool_digraph(csv_graph_tool_twitter_small_dataset)
-    small = parse_file_to_digraph(csv_small_test)
     # aprox_distance_distribution(small_to_graph_tool, 'pickles/Small_Distance_Histogram.pickle')
     
-    number_of_nodes(small, "Small Network")
+    small = parse_file_to_digraph(csv_twitter_small_dataset)
+    # number_of_nodes(small, "Small Network")
     # number_of_edges(small, 'Small Network')
     # network_density(small, "network Density")
     # number_of_weakly_connected_components(small, "Small Network")
     # number_of_strongly_connected_components(small, "Small Network")
 
-    # largestS = max(nx.strongly_connected_component_subgraphs(small), key=len)
-    # get_largest_component(largestS, "Largest Component Small Network", 'pickles/Largest_Small_In_Degree_Distribution.pickle')
+    # smallest = max(nx.weakly_connected_component_subgraphs(small), key=len)
+    # get_largest_component(smallest, "Smallest Component - Small Network", 'pickles/Largest_Small_In_Degree_Distribution.pickle')
+   
     # in_degree_distribution(small, "Small network", "pickles/Small_In_Degree_Distribution.pickle")
     # out_degree_distribution(small, "Small network", "pickles/Small_Out_Degree_Distribution.pickle")
 
 
     #Large
-    # large = parse_file_to_digraph(csv_twitter_small_dataset)
+    large = parse_file_to_digraph(csv_twitter_large_dataset)
     # number_of_nodes(large, "Large Network")
+    # number_of_edges(large, 'Large Network')
+    # network_density(large, "network Density")
+    # number_of_weakly_connected_components(large, "Large Network")
+    # number_of_strongly_connected_components(large, "Large Network")
+
+    largest = max(nx.weakly_connected_component_subgraphs(large), key=len)
+    get_largest_component(largest, "Largest Component large Network", 'pickles/Largest_large_In_Degree_Distribution.pickle')
+    # in_degree_distribution(large, "large network", "pickles/large_In_Degree_Distribution.pickle")
+    # out_degree_distribution(large, "large network", "pickles/Small_Out_Degree_Distribution.pickle")
+
+
 
 if __name__ == '__main__':
     main()

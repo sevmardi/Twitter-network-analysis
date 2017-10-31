@@ -90,3 +90,19 @@ smartonlinetwit
 iphonefuns
 iphone_nikki
 razorianfly
+
+
+
+weakly_connected_component_subgraphs
+---------------------------------------
+
+Number of Edges
+Largest Component large Network: 929233
+
+
+Number of Nodes
+Largest Component large Network: 496926
+
+
+Network Density
+Largest Component large Network: 3.7630679270155026e-06
