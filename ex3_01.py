@@ -18,14 +18,10 @@ csv_large = 'csv/twitter-large.csv'
 csv_graph_tool_large = 'csv/csv_graph_tool_twitter-large.csv'
 
 
-
-# Example how to user twitter text parser
-# p = ttp.Parser()
-# result = p.parse("@burnettedmond, you now support #IvoWertzel's tweet parser! https://github.com/edburnett/")
-# print(result.reply)
-
-
 def create_adjacency_list(file):
+    """
+    Twitter Parser 
+    """
     p = ttp.Parser()
     adj_list = {}
     tweet_counter = 0
@@ -34,7 +30,8 @@ def create_adjacency_list(file):
             line = line.rstrip('\n')
             tweet = line.split("\t")
 
-            timestamp = int(datetime.strptime(tweet[0], "%Y-%m-%d %H:%M:%S").strftime("%s"))
+            timestamp = int(datetime.strptime(
+                tweet[0], "%Y-%m-%d %H:%M:%S").strftime("%s"))
             username = tweet[1]
             result = p.parse(tweet[2], html=False).users
 
@@ -76,7 +73,7 @@ def create_edge_list(adjust_list, filename):
         for row in edge_list:
             csv_out.writerow(row)
 
-# TODO Needs refactoring.
+
 def create_graph_edge_list(adjust_list, filename):
     """
     A helper function to create edge list for graph-tool
@@ -109,7 +106,8 @@ def create_graph_edge_list(adjust_list, filename):
                           usr, mention_user, weight, timestamp)]
     with open(filename, 'w') as file:
         csv_out = csv.writer(file)
-        csv_out.writerow(['Source','Target','Source-Username','Target-Username','Weight','Timestamp']);
+        csv_out.writerow(['Source', 'Target', 'Source-Username',
+                          'Target-Username', 'Weight', 'Timestamp'])
 
         for row in edge_lst:
             csv_out.writerow(row)
@@ -119,7 +117,6 @@ if __name__ == '__main__':
     small_adjacency_list = create_adjacency_list(raw_data_twitter_test)
     create_edge_list(small_adjacency_list, csv_small_test)
     # create_graph_edge_list(small, csv_graph_tool_small)
-
 
     # large = create_adjacency_list(raw_data_twitter_large)
     # create_edge = create_edge_list(large, csv_large)
